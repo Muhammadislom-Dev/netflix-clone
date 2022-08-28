@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Barner from '../components/Barner'
 import Header from '../components/Header'
-import { Movie } from '../typings,d'
+import { Movie } from '../typings.d'
 import requests from '../utils/requests'
 
 interface Props {
@@ -40,7 +40,7 @@ const Home = ({
 
       <Header />
       <main>
-          <Barner />
+          <Barner netflixOriginals={netflixOriginals} />
           <section>
               {/* Row  */}
               {/* Row  */}
