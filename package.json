@@ -7,11 +7,13 @@
   },
   "dependencies": {
     "@heroicons/react": "^1.0.6",
+    "firebase": "^9.9.4",
     "font-awesome": "^4.7.0",
     "install": "^0.13.0",
     "next": "latest",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "react-hook-form": "^7.34.2",
     "react-icons": "^4.4.0",
     "tailwind-scrollbar-hide": "^1.1.7"
   },
