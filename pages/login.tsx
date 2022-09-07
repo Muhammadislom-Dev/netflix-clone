@@ -1,25 +1,25 @@
-import Head from "next/head";
-import Image from "next/image";
-import { useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
-import useAuth from "../hooks/useAuth";
+import Head from 'next/head'
+import Image from 'next/image'
+import { useState } from 'react'
+import { useForm, SubmitHandler } from 'react-hook-form'
+import useAuth from '../hooks/useAuth'
 
 interface Inputs {
-  email: string;
-  password: string;
+  email: string
+  password: string
 }
 
 function Login() {
-
-  const [login, setLogin] = useState(false);
-  const {signIn, signUp} = useAuth()
+  const [login, setLogin] = useState(false)
+  const { signIn, signUp } = useAuth()
 
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<Inputs>();
+  } = useForm<Inputs>()
+
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     console.log(data)
     if (login) {
@@ -47,18 +47,21 @@ function Login() {
         width={150}
         height={150}
       />
+
       <form
-        onSubmit={handleSubmit(onSubmit)}
         className="relative mt-24 space-y-8 rounded bg-black/75 py-10 px-6 md:mt-0 md:max-w-md md:px-14"
+        onSubmit={handleSubmit(onSubmit)}
       >
         <h1 className="text-4xl font-semibold">Sign In</h1>
         <div className="space-y-4">
           <label className="inline-block w-full">
             <input
-              {...register("email", { required: true })}
               type="email"
               placeholder="Email"
-              className="input"
+              className={`input ${
+                errors.email && 'border-b-2 border-orange-500'
+              }`}
+              {...register('email', { required: true })}
             />
             {errors.email && (
               <p className="p-1 text-[13px] font-light  text-orange-500">
@@ -68,10 +71,12 @@ function Login() {
           </label>
           <label className="inline-block w-full">
             <input
-              {...register("password", { required: true })}
               type="password"
+              {...register('password', { required: true })}
               placeholder="Password"
-              className="input"
+              className={`input ${
+                errors.password && 'border-b-2 border-orange-500'
+              }`}
             />
             {errors.password && (
               <p className="p-1 text-[13px] font-light  text-orange-500">
@@ -82,23 +87,24 @@ function Login() {
         </div>
         <button
           className="w-full rounded bg-[#E50914] py-3 font-semibold"
-          type="submit"
           onClick={() => setLogin(true)}
+          type="submit"
         >
           Sign In
         </button>
         <div className="text-[gray]">
-          New to Netflix?{" "}
+          New to Netflix?{' '}
           <button
             className="cursor-pointer text-white hover:underline"
-            type="submit"
             onClick={() => setLogin(false)}
+            type="submit"
           >
             Sign up now
           </button>
         </div>
       </form>
     </div>
-  );
+  )
 }
-export default Login;
+
+export default Login
